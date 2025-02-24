@@ -1,4 +1,5 @@
 let amigos = [];
+let amigosSorteados = [];
 let listaDeNomes = document.getElementById('listaAmigos');
 let nomeSorteado = document.getElementById('resultado');
 
@@ -20,8 +21,16 @@ function adicionarAmigo() {
 
 function sortearAmigo() {
     if (amigos.length > 1) {
-        limparListas();
+        if (amigos.length === amigosSorteados.length) {
+            amigosSorteados = [];
+        }
+        
         let indiceSorteado = Math.floor(Math.random() * amigos.length);
+        while (amigosSorteados.includes(amigos[indiceSorteado])) {
+            indiceSorteado = Math.floor(Math.random() * amigos.length);
+        }
+
+        amigosSorteados.push(amigos[indiceSorteado]);
         nomeSorteado.innerHTML = "O amigo secreto sorteado é: " + amigos[indiceSorteado];
     } else {
         alert("Por favor, insira ao menos 2 nomes para realizar o sorteio.");
