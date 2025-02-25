@@ -20,6 +20,7 @@ function adicionarAmigo() {
 }
 
 function sortearAmigo() {
+    limparListas();
     if (amigos.length > 1) {
         if (amigos.length === amigosSorteados.length) {
             amigosSorteados = [];
